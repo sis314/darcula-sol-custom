@@ -3,7 +3,7 @@ let g:colors_name="darcula-sol-custom"
 
 lua package.loaded['lush_theme.darcula-solid'] = nil
 
-lua require('lush')(require('lush_theme.darcula-solid'))
+lua require('lush')(require('lush_theme.darcula-sol-custom'))
 
 if has('nvim-0.9.0')
     highlight! link @lsp.type.class @type
