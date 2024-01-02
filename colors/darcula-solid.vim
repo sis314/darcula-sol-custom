@@ -1,7 +1,7 @@
 set background=dark
 let g:colors_name="darcula-sol-custom"
 
-lua package.loaded['lush_theme.darcula-solid-custom'] = nil
+lua package.loaded['lush_theme.darcula-sol-custom'] = nil
 
 lua require('lush')(require('lush_theme.darcula-sol-custom'))
 
