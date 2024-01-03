@@ -276,5 +276,10 @@ return lush(function(injected_functions)
 
         CmpItemAbbrMatch({ fg = blue }),
         CmpItemAbbrMatchFuzzy({ fg = blue }),
+
+        DiagnosticError({ fg = red }),
+        DiagnosticWarn({ fg = yellow }),
+        DiagnosticInfo({ fg = teal }),
+        DiagnosticHint({ fg = fg }),
     }
 end)
