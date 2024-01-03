@@ -33,6 +33,9 @@ local c5 = c4.lighten(20)
 local c6 = c5.lighten(70)
 local c7 = c6.lighten(80)
 
+local pmenu = c0.lighten(10)
+local pmenusel = c0.lighten(20)
+
 -- Set base colors
 local bg = c0     -- base background
 local overbg = c1 -- other backgrounds
@@ -59,7 +62,7 @@ local cyan = hsl(180, 58, 38)
 local blue = hsl(215, 80, 63).li(10)
 local purple = hsl(279, 30, 62)
 local magenta = hsl(310, 40, 70)
-local lightpurple = hsl(211, 20, 71)
+local lightblue = hsl(211, 20, 71)
 
 return lush(function(injected_functions)
     local sym = injected_functions.sym
@@ -88,11 +91,11 @@ return lush(function(injected_functions)
         Folded({ fg = comment, bg = overbg }),
         FoldColumn({ LineNr }),
 
-        Pmenu({ bg = overbg }), -- Popup menu normal item
-        PmenuSel({ bg = mid }), -- selected item
-        PmenuSbar({ Pmenu }), -- scrollbar
+        Pmenu({ bg = pmenu }), -- Popup menu normal item
+        PmenuSel({ bg = pmenusel }), -- selected item
+        PmenuSbar({ Pmenu }),  -- scrollbar
         PmenuThumb({ PmenuSel }), -- Thumb of the scrollbar
-        WildMenu({ Pmenu }),  -- current match in 'wildmenu' completion
+        WildMenu({ Pmenu }),   -- current match in 'wildmenu' completion
         QuickFixLine({ fg = pop }), -- Current |quickfix| item in the quickfix window
 
         StatusLine({ bg = subtle }),
@@ -102,7 +105,7 @@ return lush(function(injected_functions)
         TabLineFill({ bg = overbg }), -- where there are no labels
         TabLineSel({ bg = faded }), -- active tab page label
 
-        Search({ fg = bg, bg = yellow }), -- Last search pattern highlighting (see 'hlsearch')
+        Search({ fg = bg, bg = yellow }), -- Last search pattern lightblue (see 'hlsearch')
         IncSearch({ Search }),      -- 'incsearch' highlighting; also used for the text replaced with ":s///c"
         Substitute({ Search }),     -- |:substitute| replacement text highlighting
 
@@ -188,7 +191,7 @@ return lush(function(injected_functions)
         Macro({ PreProc }), -- same as Define
         PreCondit({ PreProc }), -- preprocessor #if, #else, #endif, etc.
 
-        Type({ fg = lightpurple }),
+        Type({ fg = lightblue }),
         StorageClass({ fg = magenta }), -- static, register, volatile, etc.
         Structure({ fg = magenta }), -- struct, union, enum, etc.
         Typedef({ Type }),
@@ -271,10 +274,7 @@ return lush(function(injected_functions)
         HelpHyperTextJump({ fg = yellow }),
         markdownLinkText({ fg = fg }),
 
-        -- NvimTree
-        NvimTreeNormal({ bg = treebg, fg = fg }),
-        NvimTreeIndentMarker({ fg = hsl(204, 3, 32) }),
-        NvimTreeRootFolder({ fg = folder }),
-        NvimTreeFolderIcon({ fg = folder }),
+        CmpItemAbbrMatch({ fg = blue }),
+        CmpItemAbbrMatchFuzzy({ fg = blue }),
     }
 end)
